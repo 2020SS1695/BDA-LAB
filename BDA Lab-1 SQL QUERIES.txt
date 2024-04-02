@@ -1,0 +1,55 @@
+BDA Lab-1 SQL QUERIES:
+create database my_da;
+use my_da;
+CREATE TABLE department(
+dep_id INT NOT NULL,
+dep_name VARCHAR(20),
+dep_location VARCHAR(15),
+primary key(dep_id)
+);
+CREATE TABLE employees(
+emp_id INT NOT NULL,
+emp_name VARCHAR(20),
+job_name VARCHAR(20),
+manager_id INT,
+hire_date DATE,
+salary DECIMAL(10,2),
+commission DECIMAL(7,2),
+dep_id INT,
+primary key(emp_id),
+FOREIGN KEY (dep_id) REFERENCES department(dep_id)
+);
+
+
+INSERT INTO department
+VALUES
+(1,'CSE','Basavanagudi'),
+(2,'ISE','Bull Tample');
+
+INSERT INTO employees
+VALUES
+(3,'Shivu','analytics',5,'1991-02-22',20000,5000,1),
+(4,'Ramu','manager',6,'1992-03-02',30000,6000,2);
+
+update employees
+set job_name='clerk'
+where emp_id=3;
+
+select emp_name,salary
+from employees;
+
+SELECT *
+FROM employees
+WHERE DATE_FORMAT(hire_date, '%M %d, %Y') = 'February 22, 1991';
+
+SELECT avg(salary)
+FROM employees
+WHERE job_name='analytics';
+
+SELECT *
+FROM employees
+WHERE job_name='manager' AND 'clerk';
+
+SELECT *
+FROM employees
+WHERE salary between 24000 AND 50000;

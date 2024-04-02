@@ -1,0 +1,102 @@
+BDA LAB-2 MONGO-DB QUERIES:
+
+Lingaraj Godachappa Mannur <lingaraj.cs21@bmsce.ac.in>
+Tue, Mar 26, 3:45 PM (7 days ago)
+to Girish
+
+icrosoft Windows [Version 10.0.22631.3296]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\STUDENT>mongosh "mongodb+srv://cluster0.hiqmj7i.mongodb.net/" --apiVersion 1 --username lingarajcs21
+Enter password: *************
+Current Mongosh Log ID: 66029305fbf043728c1f0bc2
+Connecting to:          mongodb+srv://<credentials>@cluster0.hiqmj7i.mongodb.net/?appName=mongosh+2.0.0
+Using MongoDB:          7.0.7 (API Version 1)
+Using Mongosh:          2.0.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+Atlas atlas-i298fa-shard-0 [primary] test> show collection
+MongoshInvalidInputError: [COMMON-10001] 'collection' is not a valid argument for "show".
+Atlas atlas-i298fa-shard-0 [primary] test> db.createCollection("Student");
+{ ok: 1 }
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.insert({RollNo:1,Age:21,Cont:9876,email:"antara.de9@gmail.com"});
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("660294e2fbf043728c1f0bc3") }
+}
+Atlas atlas-i298fa-shard-0 [primary] test>
+
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.insert({RollNo:2,Age:22,Cont:9976,email:"anushka.de9@gmail.com"});
+
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("660294e2fbf043728c1f0bc4") }
+}
+Atlas atlas-i298fa-shard-0 [primary] test>
+
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.insert({RollNo:3,Age:21,Cont:5576,email:"anubhav.de9@gmail.com"});
+
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("660294e2fbf043728c1f0bc5") }
+}
+Atlas atlas-i298fa-shard-0 [primary] test>
+
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.insert({RollNo:4,Age:20,Cont:4476,email:"pani.de9@gmail.com"});
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("660294e2fbf043728c1f0bc6") }
+}
+Atlas atlas-i298fa-shard-0 [primary] test>
+
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.insert({RollNo:10,Age:23,Cont:2276,email:"rekha.de9@gmail.com"});
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("660294fbfbf043728c1f0bc7") }
+}
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.find()
+[
+  {
+    _id: ObjectId("660294e2fbf043728c1f0bc3"),
+    RollNo: 1,
+    Age: 21,
+    Cont: 9876,
+    email: 'antara.de9@gmail.com'
+  },
+  {
+    _id: ObjectId("660294e2fbf043728c1f0bc4"),
+    RollNo: 2,
+    Age: 22,
+    Cont: 9976,
+    email: 'anushka.de9@gmail.com'
+  },
+  {
+    _id: ObjectId("660294e2fbf043728c1f0bc5"),
+    RollNo: 3,
+    Age: 21,
+    Cont: 5576,
+    email: 'anubhav.de9@gmail.com'
+  },
+  {
+    _id: ObjectId("660294e2fbf043728c1f0bc6"),
+    RollNo: 4,
+    Age: 20,
+    Cont: 4476,
+    email: 'pani.de9@gmail.com'
+  },
+  {
+    _id: ObjectId("660294fbfbf043728c1f0bc7"),
+    RollNo: 10,
+    Age: 23,
+    Cont: 2276,
+    email: 'rekha.de9@gmail.com'
+  }
+]
+Atlas atlas-i298fa-shard-0 [primary] test> db.Student.update({RollNo:10},{$set:{
+... email:"Abhinav@gmail.com"}});
